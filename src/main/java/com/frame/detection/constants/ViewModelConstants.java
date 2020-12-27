@@ -26,6 +26,9 @@ public class ViewModelConstants {
     /**
      * image on detectOut
      */
-    public static final String DETECT_OUT_IMAGE = "img";
+    //public static final String DETECT_OUT_IMAGE = "img";
+    public static final String DETECT_OUT_IMAGE_percent = "img";
+    public static final String DETECT_OUT_words = "words";
+
 
 }

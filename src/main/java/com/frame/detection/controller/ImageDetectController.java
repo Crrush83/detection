@@ -82,9 +82,13 @@ public class ImageDetectController {
                 : imageDetectService.detectByFile(imageFile);
 
         // step 2. assemble modelAndView
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(ViewModelConstants.DETECT_OUT);
-        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
+        String[] result = detectOut.split(" ",2);
+        //modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE_percent, result[0]);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_words, result[1]);
 
         // step 3. return detect result page
         return modelAndView;
@@ -100,13 +104,17 @@ public class ImageDetectController {
     public ModelAndView consultImage(String imageLink) throws Exception {
 
         // step 1. detect image
+        //base64格式的图片+识别的文字
         String detectOut = imageConsultService.detectInQueue(imageLink);
 
 
         // step 2. assemble modelAndView
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(ViewModelConstants.DETECT_OUT);
-        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
+        String[] result = detectOut.split(" ",2);
+        //modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE_percent, result[0]);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_words, result[1]);
 
         // step 3. return detect result page
         return modelAndView;
